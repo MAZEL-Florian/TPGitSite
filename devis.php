@@ -9,10 +9,10 @@ include("connexion.php");
 </head>
 
 <body>
-    
-    <h1>Devis</h1>
+
+    <h1><u>Devis</u></h1>
     <div style="text-align: -webkit-center;" class="table">
-        <table >
+        <table>
             <tr>
                 <th>nom du client</th>
                 <th>date</th>
@@ -23,24 +23,24 @@ include("connexion.php");
                 <th>tva</th>
                 <th>prix ttc</th>
             </tr>
-            <?php 
+            <?php
             $select = "SELECT * FROM devis";
             $result = $conn->query($select);
-            while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 echo '<tr>';
                 $row_contact = $row['idcontact'];
                 $select2 = "SELECT prenom FROM contacts WHERE id = '$row_contact'";
                 $result2 = $conn->query($select2);
-                while($row2 = $result2->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<td>'.$row2['prenom'].'</td>';
+                while ($row2 = $result2->fetch(PDO::FETCH_ASSOC)) {
+                    echo '<td>' . $row2['prenom'] . '</td>';
                 }
-                echo '<td>'.$row['date'].'</td>';
-                echo '<td>'.$row['numero'].'</td>';
-                echo '<td>'.$row['description'].'</td>';
-                echo '<td>'.$row['qti'].'</td>';
-                echo '<td>'.$row['prixht'].'</td>';
-                echo '<td>'.$row['tva'].'</td>';
-                echo '<td>'.$row['prixtc'].'</td>';
+                echo '<td>' . $row['date'] . '</td>';
+                echo '<td>' . $row['numero'] . '</td>';
+                echo '<td>' . $row['description'] . '</td>';
+                echo '<td>' . $row['qti'] . '</td>';
+                echo '<td>' . $row['prixht'] . '</td>';
+                echo '<td>' . $row['tva'] . '</td>';
+                echo '<td>' . $row['prixtc'] . '</td>';
                 echo '</tr>';
             }
             ?>
@@ -50,7 +50,7 @@ include("connexion.php");
 
     <br><br><br><br>
 
-    <h1>Créer un nouveau Devis</h1>
+    <h1><u>Créer un nouveau Devis</u></h1>
 
     <div class="formbold-main-wrapper">
 
@@ -86,17 +86,17 @@ include("connexion.php");
                     <label for="message" class="formbold-form-label"> description </label>
                     <textarea rows="6" name="message" id="message" placeholder="Type your message" class="formbold-form-input"></textarea>
                 </div>
-                
+
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> quantité </label>
                     <input type="text" name="amount" id="amount" placeholder="amount" class="formbold-form-input" />
                 </div>
-                
+
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> prix HT</label>
                     <input type="text" name="price" id="price" placeholder="price without tax" class="formbold-form-input" />
                 </div>
-                
+
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> TVA </label>
                     <input type="text" name="VAT" id="VAT" placeholder="VAT" class="formbold-form-input" />
@@ -114,18 +114,24 @@ include("connexion.php");
         </div>
     </div>
     <style>
+        th {
+            padding: 20px;
+            margin: 20px;
+        }
 
-    th{
-        padding: 20px;
-        margin: 20px;
-    }
-    td{
-        padding: 20px;
-        margin: 20px;
-        border: 1px solid red;
-    }
+        td {
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid red;
+        }
+
         body {
             font-family: "Inter", sans-serif;
+        }
+
+        #nom {
+            width: 100%;
+            height: 50px;
         }
 
         .formbold-mb-5 {
@@ -228,7 +234,9 @@ include("connexion.php");
 
 
 
-
+        h1 {
+            text-align: center;
+        }
 
 
 
@@ -236,10 +244,8 @@ include("connexion.php");
 
 
         th {
- background-color:#fcb424;
- }                            
- 
-
+            background-color: #fcb424;
+        }
     </style>
 </body>
 
