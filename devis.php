@@ -1,3 +1,7 @@
+<?php
+include("connexion.php");
+?>
+
 <html>
 
 <head>
@@ -36,17 +40,28 @@
             <form action="https://formbold.com/s/FORM_ID" method="POST">
                 <div class="formbold-mb-5">
                     <label for="name" class="formbold-form-label"> choisir un contact </label>
-                    <input type="text" name="name" id="name" placeholder="Full Name" class="formbold-form-input" />
+                    <select id="nom" name="nom">
+                        <?php
+                        $reponse = $conn->query('SELECT * FROM contacts');
+                        $donnees = $reponse->fetch();
+
+                        while ($donnees = $reponse->fetch()) {
+                            echo '<option value="' . $donnees['id'] . '">' . $donnees['prenom'] . '</option>';
+                        }
+
+                        $reponse->closeCursor()
+                        ?>
+                    </select>
                 </div>
 
                 <div class="formbold-mb-5">
                     <label for="email" class="formbold-form-label"> date </label>
-                    <input type="email" name="email" id="email" placeholder="Enter your email" class="formbold-form-input" />
+                    <input type="date" name="date" id="date" placeholder="Enter the date" class="formbold-form-input" />
                 </div>
 
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> numéro </label>
-                    <input type="text" name="subject" id="subject" placeholder="Enter your subject" class="formbold-form-input" />
+                    <input type="text" name="number" id="number" class="formbold-form-input" />
                 </div>
 
                 <div class="formbold-mb-5">
@@ -56,22 +71,22 @@
                 
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> quantité </label>
-                    <input type="text" name="subject" id="subject" placeholder="Enter your subject" class="formbold-form-input" />
+                    <input type="text" name="amount" id="amount" placeholder="amount" class="formbold-form-input" />
                 </div>
                 
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> prix HT</label>
-                    <input type="text" name="subject" id="subject" placeholder="Enter your subject" class="formbold-form-input" />
+                    <input type="text" name="price" id="price" placeholder="price without tax" class="formbold-form-input" />
                 </div>
                 
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> TVA </label>
-                    <input type="text" name="subject" id="subject" placeholder="Enter your subject" class="formbold-form-input" />
+                    <input type="text" name="VAT" id="VAT" placeholder="VAT" class="formbold-form-input" />
                 </div>
 
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> prix ttc </label>
-                    <input type="text" name="subject" id="subject" placeholder="Enter your subject" class="formbold-form-input" />
+                    <input type="text" name="taxes" id="taxes" placeholder="All taxes included price" class="formbold-form-input" />
                 </div>
 
                 <div>
@@ -192,12 +207,3 @@
 </body>
 
 </html>
-
-<?php
-include("connexion.php");
-
-$nom = $_POST['nom'];
-$prenom = $_POST['prenom'];
-$dbh->exec("INSERT INTO adherants(id,nom,prenom) VALUES('','$nom','$prenom')");
-
-?>
