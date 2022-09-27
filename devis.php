@@ -9,30 +9,48 @@ include("connexion.php");
 </head>
 
 <body>
+    
     <h1>Devis</h1>
-    <div class="table">
-        <table>
+    <div style="text-align: -webkit-center;" class="table">
+        <table >
             <tr>
-                <th>Numéro</th>
-                <th>Client</th>
-                <th>Montant</th>
-                <th>Date</th>
-                <th>Statut</th>
+                <th>nom du client</th>
+                <th>date</th>
+                <th>numéro</th>
+                <th>description</th>
+                <th>quantité</th>
+                <th>prix ht</th>
+                <th>tva</th>
+                <th>prix ttc</th>
             </tr>
-            <tr>
-                <td>etr</td>
-                <td>ter</td>
-                <td>gdf</td>
-                <td>ter</td>
-                <td>gdf</td>
-            </tr>
+            <?php 
+            $select = "SELECT * FROM devis";
+            $result = $conn->query($select);
+            while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                echo '<tr>';
+                $row_contact = $row['idcontact'];
+                $select2 = "SELECT prenom FROM contacts WHERE id = '$row_contact'";
+                $result2 = $conn->query($select2);
+                while($row2 = $result2->fetch(PDO::FETCH_ASSOC)) {
+                    echo '<td>'.$row2['prenom'].'</td>';
+                }
+                echo '<td>'.$row['date'].'</td>';
+                echo '<td>'.$row['numero'].'</td>';
+                echo '<td>'.$row['description'].'</td>';
+                echo '<td>'.$row['qti'].'</td>';
+                echo '<td>'.$row['prixht'].'</td>';
+                echo '<td>'.$row['tva'].'</td>';
+                echo '<td>'.$row['prixtc'].'</td>';
+                echo '</tr>';
+            }
+            ?>
         </table>
     </div>
 
 
     <br><br><br><br>
 
-
+    <h1>Créer un nouveau Devis</h1>
 
     <div class="formbold-main-wrapper">
 
@@ -96,12 +114,16 @@ include("connexion.php");
         </div>
     </div>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
+    th{
+        padding: 20px;
+        margin: 20px;
+    }
+    td{
+        padding: 20px;
+        margin: 20px;
+        border: 1px solid red;
+    }
         body {
             font-family: "Inter", sans-serif;
         }
@@ -203,6 +225,21 @@ include("connexion.php");
                 width: 50%;
             }
         }
+
+
+
+
+
+
+
+
+
+
+        th {
+ background-color:#fcb424;
+ }                            
+ 
+
     </style>
 </body>
 
