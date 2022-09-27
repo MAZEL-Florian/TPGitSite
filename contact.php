@@ -52,8 +52,15 @@
             </div>
         </form>
         <?php
-    include 'connexion.php';
-?>
+            include 'connexion.php';
+            
+
+                $compteur = "SELECT COUNT(*) AS count FROM contacts";
+                $resultat = $conn->query($compteur);
+                while ($row = $resultat->fetch(PDO::FETCH_ASSOC)) { 
+                    echo $row['count'];
+                };
+            ?>
         </div>
     </body>
 </html>
