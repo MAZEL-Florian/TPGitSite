@@ -1,16 +1,4 @@
-<?php
-    $servername = 'sql585.main-hosting.eu';
-    $user = "u133425825_b32";
-    $pass = "2&~zZv4&r#R";
-    
-    try{
-        $conn = new PDO("mysql:host=$servername;dbname=u133425825_gestionnaire2", $user, $pass);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }
-    catch(PDOException $e){
-        echo "Erreur : " . $e->getMessage();
-    }
-?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,7 +10,7 @@
     <body>
         <h1 class="text-center py-5">Contact</h1>  
         <div class="container">
-        <form class="row g-3" method="post">
+        <form class="row g-3" action="ajoutcontact.php" method="post">
             <div class="col-md-6">
                 <label for="validationServer01" class="form-label">Nom</label>
                 <input type="text" class="form-control" name="nom" required>
@@ -64,22 +52,8 @@
             </div>
         </form>
         <?php
-                if(isset($_POST['submit'])) 
-        {
-            echo("First name: " . $_POST['nom'] . "<br />\\n");
-            echo("Last name: " . $_POST['prenom'] . "<br />\\n");
-            echo("Last name: " . $_POST['nomsociete'] . "<br />\\n");
-            echo("Last name: " . $_POST['ville'] . "<br />\\n");
-            echo("Last name: " . $_POST['rue'] . "<br />\\n");
-            echo("Last name: " . $_POST['cp'] . "<br />\\n");
-            echo("Last name: " . $_POST['pays'] . "<br />\\n");
-            echo("Last name: " . $_POST['tel'] . "<br />\\n");
-            echo("Last name: " . $_POST['mail'] . "<br />\\n");
-        }
-        else {
-            echo "marche pas";
-        }
-        ?>
+    include 'connexion.php';
+?>
         </div>
     </body>
 </html>
