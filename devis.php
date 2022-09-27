@@ -37,7 +37,7 @@ include("connexion.php");
     <div class="formbold-main-wrapper">
 
         <div class="formbold-form-wrapper">
-            <form action="https://formbold.com/s/FORM_ID" method="POST">
+            <form action="send_devis.php" method="POST">
                 <div class="formbold-mb-5">
                     <label for="name" class="formbold-form-label"> choisir un contact </label>
                     <select id="nom" name="nom">
