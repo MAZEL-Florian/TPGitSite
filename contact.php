@@ -79,34 +79,23 @@
         </form>
         <?php
             include 'connexion.php';
-            
-
-                
-            ?>
+        ?>
             <h1 class="text-center py-5">Mon nombre de contacts</h1>
-            <table class="table">
+            <table class="table table-bordered text-center">
                 <thead class="table-dark">
                     <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre de contacts</th>
+                    <th class="col-4">Nombre de contacts</th>
+                    <th class="col-4">
+                        <?php 
+                            $compteur = "SELECT COUNT(*) AS count FROM contacts";
+                            $resultat = $conn->query($compteur);
+                            while ($row = $resultat->fetch(PDO::FETCH_ASSOC)) { 
+                                echo $row['count'];
+                            };
+                        ?>
+                    </th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                    <th scope="row">Nombre de contacts</th>
-                        <td>
-                            <strong>
-                                <?php 
-                                $compteur = "SELECT COUNT(*) AS count FROM contacts";
-                                $resultat = $conn->query($compteur);
-                                while ($row = $resultat->fetch(PDO::FETCH_ASSOC)) { 
-                                    echo $row['count'];
-                                };
-                                ?>
-                            </strong>
-                        </td>
-                    </tr>
-                </tbody>
                 </table>
         </div>
         <h1 class="text-center py-5">Liste des contacts</h1>
