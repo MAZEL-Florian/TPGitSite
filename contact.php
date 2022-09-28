@@ -24,13 +24,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Cours PHP / MySQL</title>
+        <title>Mes contacts</title>
         <meta charset="utf-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="cours.css">
     </head>
     <body>
-        <h1 class="text-center py-5">Contact</h1>  
+        <h1 class="text-center py-5">Ajouter un contact</h1>  
         <div class="container">
         <form class="row g-3" action="ajoutcontact.php" method="post">
             <div class="col-md-6">
@@ -77,47 +77,39 @@
             include 'connexion.php';
             
 
-                $compteur = "SELECT COUNT(*) AS count FROM contacts";
-                $resultat = $conn->query($compteur);
-                while ($row = $resultat->fetch(PDO::FETCH_ASSOC)) { 
-                    echo $row['count'];
-                };
+                
             ?>
+            <h1 class="text-center py-5">Mon nombre de contacts</h1>
             <table class="table">
-                <thead>
+                <thead class="table-dark">
                     <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Nombre de contacts</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
+                    <th scope="row">Nombre de contacts</th>
+                        <td>
+                            <strong>
+                                <?php 
+                                $compteur = "SELECT COUNT(*) AS count FROM contacts";
+                                $resultat = $conn->query($compteur);
+                                while ($row = $resultat->fetch(PDO::FETCH_ASSOC)) { 
+                                    echo $row['count'];
+                                };
+                                ?>
+                            </strong>
+                        </td>
                     </tr>
                 </tbody>
                 </table>
         </div>
+        <h1 class="text-center py-5">Liste des contacts</h1>
         <?php
         //list all contacts
         foreach($data as $row){
-            echo "<div class='container'>";
+            echo "<div class='container py-3'>";
                 echo "<div class='row'>";
                     echo "<div class='col-12'>";
                         echo "<div class='card'>";
