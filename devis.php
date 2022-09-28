@@ -22,6 +22,7 @@ include("connexion.php");
                 <th>prix ht</th>
                 <th>tva</th>
                 <th>prix ttc</th>
+                <th>supprimer</th>
             </tr>
             <?php
             $select = "SELECT * FROM devis";
@@ -41,6 +42,7 @@ include("connexion.php");
                 echo '<td>' . $row['prixht'] . '</td>';
                 echo '<td>' . $row['tva'] . '</td>';
                 echo '<td>' . $row['prixtc'] . '</td>';
+                echo '<td><form action="delete_devis.php" method="POST"><input type="hidden" name="id" id="id" value="'. $row ['id'].'" class="formbold-form-input" /><button class="formbold-btn-delet">Supprimer</button></form></td>';
                 echo '</tr>';
             }
             ?>
@@ -199,7 +201,17 @@ include("connexion.php");
             color: white;
             cursor: pointer;
         }
-
+        .formbold-btn-delet{
+            text-align: center;
+            font-size: 16px;
+            border-radius: 6px;
+            padding: 14px 32px;
+            border: none;
+            font-weight: 600;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+        }
         .formbold-btn:hover {
             box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
         }
