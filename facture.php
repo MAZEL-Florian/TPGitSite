@@ -20,6 +20,7 @@ while($row = mysqli_fetch_assoc($result))
 }
 //close the connection
 mysqli_close($dbhandle);
+include 'navbar.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,6 +43,7 @@ mysqli_close($dbhandle);
                     <th scope="col">Prix HT</th>
                     <th scope="col">TVA</th>
                     <th scope="col">Prix TTC</th>
+                    <th scope="col">Condition Paiement</th>
                 </tr>
             </thead>
             <tbody>
@@ -55,6 +57,7 @@ mysqli_close($dbhandle);
                     echo "<td>$facture[prixht]</td>";
                     echo "<td>$facture[tva]</td>";
                     echo "<td>$facture[prixtc]</td>";
+                    echo "<td>$facture[conditionpaiement]</td>";
                     echo "</tr>";
                 }
                 ?>

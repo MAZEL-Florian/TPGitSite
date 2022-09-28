@@ -50,6 +50,10 @@ $query = "SELECT * FROM factures WHERE id = $id";
                 <label for="prixtc" class="form-label">Prix TTC</label>
                 <input type="number" class="form-control" id="prixtc" name="prixtc">
             </div>
+            <div class="mb-3">
+                <label for="conditionpaiement" class="form-label">Condition Paiement</label>
+                <input type="number" class="form-control" id="conditionpaiement" name="conditionpaiement">
+            </div>
             <button type="submit" class="btn btn-primary">Ajouter</button>
         </form>
         </center>
