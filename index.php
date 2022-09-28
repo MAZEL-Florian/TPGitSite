@@ -11,9 +11,9 @@ try{
 catch(PDOException $e){
     echo "Erreur : " . $e->getMessage();
 }
-//update contact
-$sql = "?";
-$conn->exec($sql);
+//find number of factures in the facture table
+$sql = "SELECT COUNT(*) FROM factures";
+$result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,6 +24,20 @@ $conn->exec($sql);
         <link rel="stylesheet" href="cours.css">
     </head>
     <body>
-        <?php include 'navbar.php'; ?>
+    <div class="container">
+        <h1 class="text-center py-5">Mon nombre de contacts</h1>
+            <table class="table table-bordered text-center">
+                <thead class="table-dark">
+                    <tr>
+                    <th class="col-4">Nombre de Factures</th>
+                    <th class="col-4">
+                        <?php 
+                            echo "Il y a " . $result->fetchColumn() . " factures dans la base de données.";
+                        ?>
+                    </th>
+                    </tr>
+                </thead>
+                </table>
+        </div>
     </body>
 </html>
