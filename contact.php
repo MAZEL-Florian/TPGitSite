@@ -10,6 +10,15 @@
     catch(PDOException $e){
         echo "Erreur : " . $e->getMessage();
     }
+    //query the contact table
+    $sql = "SELECT * FROM contacts";
+    $result = $conn->query($sql);
+    $result->setFetchMode(PDO::FETCH_ASSOC);
+    $result->execute();
+    $data = $result->fetchAll();
+    function deleteContact($idContact){
+        echo $idContact;
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -81,5 +90,29 @@
         }
         ?>
         </div>
+        <?php
+        //list all contacts
+        foreach($data as $row){
+            echo "<div class='container'>";
+                echo "<div class='row'>";
+                    echo "<div class='col-12'>";
+                        echo "<div class='card'>";
+                            echo "<div class='card-body'>";
+                            echo "<h5 class='card-title'>Nom: " . $row['nom'] . " " . $row['prenom'] . "</h5>";
+                            echo "<h6 class='card-subtitle mb-2 text-muted'>Societe: " . $row['nomsociete'] . "</h6>";
+                            echo "<p class='card-text'> Adresse: " . $row['rue'] . " " . $row['cp'] . "  " . $row['ville'] . " " . $row['pays'] . "</p>";
+                            echo "<p class='card-text'>Tel: " . $row['tel'] . "</p>";
+                            echo "<p class='card-text'>Mail: " . $row['mail'] . "</p>";
+                            
+                            //button to delete contact using deleteContact.php
+                            echo "<a href='deleteContact.php?id=" . $row['id'] . "' class='btn btn-danger'>Supprimer</a>";
+
+                            echo "</div>";
+                        echo "</div>";
+                    echo "</div>";
+                echo "</div>";
+            echo "</div>";
+        }
+        ?>
     </body>
 </html>
