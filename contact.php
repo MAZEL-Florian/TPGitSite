@@ -30,6 +30,10 @@
         <link rel="stylesheet" href="cours.css">
     </head>
     <body>
+        
+        <?php
+            include 'navbar.php';
+        ?>
         <h1 class="text-center py-5">Ajouter un contact</h1>  
         <div class="container">
         <form class="row g-3" action="ajoutcontact.php" method="post">
