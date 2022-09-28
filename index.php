@@ -11,9 +11,9 @@ try{
 catch(PDOException $e){
     echo "Erreur : " . $e->getMessage();
 }
-//update contact
-// $sql = "?";
-// $conn->exec($sql);
+//find number of factures in the facture table
+$sql = "SELECT COUNT(*) FROM factures";
+$result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,6 +38,16 @@ catch(PDOException $e){
                             while ($row = $resultat->fetch(PDO::FETCH_ASSOC)) { 
                                 echo $row['count'];
                             };
+                        ?>
+                </table>
+    <div class="container">
+            <table class="table table-bordered text-center">
+                <thead class="table-dark">
+                    <tr>
+                    <th class="col-4">Nombre de Factures</th>
+                    <th class="col-4">
+                        <?php 
+                            echo $result->fetchColumn();
                         ?>
                     </th>
                     </tr>
