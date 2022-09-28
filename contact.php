@@ -117,8 +117,8 @@
                             echo "<a href='deleteContact.php?id=" . $row['id'] . "' class='btn btn-danger'>Supprimer</a>";
                             //button to update the contact using updateContact.php
                             echo "<a href='updateContact.php?id=" . $row['id'] . "' class='btn btn-warning '>Modifier</a>";
-                            //button to see the factures of the contact
-                            echo "<a href='facture.php?id=" . $row['id'] . "' class='btn btn-success'>Factures</a>";
+                            echo "<a href='listeDevis.php?id=" . $row['id'] . "' class='btn btn-primary '>Devis</a>";
+                            echo "<a href='facture.php?id=" . $row['id'] . "' class='btn btn-primary '>Factures</a>";
                             echo "</div>";
                         echo "</div>";
                     echo "</div>";
