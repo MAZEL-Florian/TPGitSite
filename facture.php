@@ -8,7 +8,7 @@ $id = $_GET['id'];
 //connection to the database using mysqli
 $dbhandle = mysqli_connect($url,$username,$password,$database) or die("Unable to connect to MySQL");
 //query to select all factures from the factures table
-$query = "SELECT * FROM factures";
+$query = "SELECT * FROM factures WHERE idcontact = $id";
 //execute the query
 $result = mysqli_query($dbhandle,$query) or die("Error in Selecting " . mysqli_error($dbhandle));
 //create an array
