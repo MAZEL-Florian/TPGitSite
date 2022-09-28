@@ -7,6 +7,7 @@ $qti = $_POST['qti'];
 $prixht = $_POST['prixht'];
 $tva = $_POST['tva'];
 $prixtc = $_POST['prixtc'];
+$conditionpaiement = $_POST['conditionpaiement'];
 $id = $_GET['id'];
 $username="u133425825_b32";
 $password="2&~zZv4&r#R";
@@ -15,7 +16,7 @@ $database="u133425825_gestionnaire2";
 //connection to the database using mysqli
 $dbhandle = mysqli_connect($url,$username,$password,$database) or die("Unable to connect to MySQL");
 //insert facture into factures table
-$query = "INSERT INTO factures (date, numero, description, qti, prixht, tva, prixtc, idcontact) VALUES ('$date', '$numero', '$description', '$qti', '$prixht', '$tva', '$prixtc', '$id')";
+$query = "INSERT INTO factures (date, numero, description, qti, prixht, tva, prixtc, idcontact, conditionpaiement) VALUES ('$date', '$numero', '$description', '$qti', '$prixht', '$tva', '$prixtc', '$id', '$conditionpaiement')";
 $result = mysqli_query($dbhandle, $query);
 //close the connection
 mysqli_close($dbhandle);
