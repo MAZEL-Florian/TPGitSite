@@ -12,8 +12,8 @@ catch(PDOException $e){
     echo "Erreur : " . $e->getMessage();
 }
 //update contact
-$sql = "?";
-$conn->exec($sql);
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,6 +24,27 @@ $conn->exec($sql);
         <link rel="stylesheet" href="cours.css">
     </head>
     <body>
-        <?php include 'navbar.php'; ?>
+    <?php
+            include 'navbar.php';
+        ?>
+    <div class="container">
+        <h1 class="text-center py-5">Mon nombre de devis</h1>
+            <table class="table table-bordered text-center">
+                <thead class="table-dark">
+                    <tr>
+                    <th class="col-4">Nombre de devis</th>
+                    <th class="col-4">
+                        <?php 
+                            $compteur = "SELECT COUNT(*) AS count FROM devis";
+                            $resultat = $conn->query($compteur);
+                            while ($row = $resultat->fetch(PDO::FETCH_ASSOC)) { 
+                                echo $row['count'];
+                            };
+                        ?>
+                    </th>
+                    </tr>
+                </thead>
+                </table>
+        </div>
     </body>
 </html>
