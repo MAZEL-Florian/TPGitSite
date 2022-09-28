@@ -11,7 +11,9 @@ $donnees = $reponse->fetch();
 
 $reponse->closeCursor()
 ?>
-
+<?php
+include("navbar.php");
+?>
 <html>
 
 <head>
@@ -75,6 +77,11 @@ $reponse->closeCursor()
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> prix ttc </label>
                     <input type="text" name="prixtc" id="prixtc" placeholder="All taxes included price" value="<?php echo $donnees['prixtc'] ?>" class="formbold-form-input" />
+                </div>
+
+                <div class="formbold-mb-5">
+                    <label for="subject" class="formbold-form-label"> prix ttc </label>
+                    <input type="text" name="condtionpaiement" id="condtionpaiement" placeholder="condition" value="<?php echo $donnees['condtionpaiement'] ?>" class="formbold-form-input" />
                 </div>
 
                 <div>

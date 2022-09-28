@@ -2,6 +2,10 @@
 include("connexion.php");
 ?>
 
+<?php
+include("navbar.php");
+?>
+
 <html>
 
 <head>
@@ -22,6 +26,7 @@ include("connexion.php");
                 <th>prix ht</th>
                 <th>tva</th>
                 <th>prix ttc</th>
+                <th>condition de paiement</th>
                 <th>supprimer</th>
                 <th>modifier</th>
             </tr>
@@ -43,6 +48,7 @@ include("connexion.php");
                 echo '<td>' . $row['prixht'] . '</td>';
                 echo '<td>' . $row['tva'] . '</td>';
                 echo '<td>' . $row['prixtc'] . '</td>';
+                echo '<td>' . $row['conditionpaiement'] . '</td>';
                 echo '<td><form action="delete_devis.php" method="POST"><input type="hidden" name="id" id="id" value="'. $row ['id'].'"  /><button class="formbold-btn-delet">Supprimer</button></form></td>';
                 echo '<td><form action="edit_devis.php" method="POST"><input type="hidden" name="id" id="id" value="'. $row ['id'].'" /><button class="formbold-btn">moidifier</button></form></td>';
                 echo '</tr>';
@@ -109,6 +115,11 @@ include("connexion.php");
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> prix ttc </label>
                     <input type="text" name="taxes" id="taxes" placeholder="All taxes included price" class="formbold-form-input" />
+                </div>
+
+                <div class="formbold-mb-5">
+                    <label for="subject" class="formbold-form-label"> condition de paiement </label>
+                    <input type="text" name="conditionpaiement" id="conditionpaiement" placeholder="condition" class="formbold-form-input" />
                 </div>
 
                 <div>
