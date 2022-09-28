@@ -1,5 +1,15 @@
 <?php
 include("connexion.php");
+$id = $_POST['id'];
+
+$select = 'SELECT * FROM devis where id = '.$id.';';
+$reponse = $conn->query($select);
+$donnees = $reponse->fetch();
+
+
+
+
+$reponse->closeCursor()
 ?>
 
 <html>
@@ -10,109 +20,65 @@ include("connexion.php");
 
 <body>
 
-    <h1><u>Devis</u></h1>
-    <div style="text-align: -webkit-center;" class="table">
-        <table>
-            <tr>
-                <th>nom du client</th>
-                <th>date</th>
-                <th>numéro</th>
-                <th>description</th>
-                <th>quantité</th>
-                <th>prix ht</th>
-                <th>tva</th>
-                <th>prix ttc</th>
-                <th>supprimer</th>
-                <th>modifier</th>
-            </tr>
-            <?php
-            $select = "SELECT * FROM devis";
-            $result = $conn->query($select);
-            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                echo '<tr>';
-                $row_contact = $row['idcontact'];
-                $select2 = "SELECT prenom FROM contacts WHERE id = '$row_contact'";
-                $result2 = $conn->query($select2);
-                while ($row2 = $result2->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<td>' . $row2['prenom'] . '</td>';
-                }
-                echo '<td>' . $row['date'] . '</td>';
-                echo '<td>' . $row['numero'] . '</td>';
-                echo '<td>' . $row['description'] . '</td>';
-                echo '<td>' . $row['qti'] . '</td>';
-                echo '<td>' . $row['prixht'] . '</td>';
-                echo '<td>' . $row['tva'] . '</td>';
-                echo '<td>' . $row['prixtc'] . '</td>';
-                echo '<td><form action="delete_devis.php" method="POST"><input type="hidden" name="id" id="id" value="'. $row ['id'].'"  /><button class="formbold-btn-delet">Supprimer</button></form></td>';
-                echo '<td><form action="edit_devis.php" method="POST"><input type="hidden" name="id" id="id" value="'. $row ['id'].'" /><button class="formbold-btn">moidifier</button></form></td>';
-                echo '</tr>';
-            }
-            ?>
-        </table>
-    </div>
-
-
-    <br><br><br><br>
-
-    <h1><u>Créer un nouveau Devis</u></h1>
+    <h1><u>Modifier un Devis</u></h1>
 
     <div class="formbold-main-wrapper">
 
         <div class="formbold-form-wrapper">
-            <form action="send_devis.php" method="POST">
+            <form action="edit_devis_ex.php" method="POST">
                 <div class="formbold-mb-5">
                     <label for="name" class="formbold-form-label"> choisir un contact </label>
-                    <select id="nom" name="nom">
-                        <?php
-                        $reponse = $conn->query('SELECT * FROM contacts');
-                        $donnees = $reponse->fetch();
+                     <select id="nom" name="nom">
+                     <?php
+                        $reponse2 = $conn->query('SELECT * FROM contacts');
+                        $donnees2 = $reponse2->fetch();
 
-                        while ($donnees = $reponse->fetch()) {
-                            echo '<option value="' . $donnees['id'] . '">' . $donnees['prenom'] . '</option>';
+                        while ($donnees2 = $reponse2->fetch()) {
+                            echo '<option value="' . $donnees2['id'] . '">' . $donnees2['prenom'] . '</option>';
                         }
 
                         $reponse->closeCursor()
                         ?>
-                    </select>
+                    </select> 
                 </div>
 
                 <div class="formbold-mb-5">
                     <label for="email" class="formbold-form-label"> date </label>
-                    <input type="date" name="date" id="date" placeholder="Enter the date" class="formbold-form-input" />
+                    <input type="date" name="date" id="date" value="<?php echo $donnees['date'] ?>" placeholder="Enter the date" class="formbold-form-input" />
                 </div>
 
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> numéro </label>
-                    <input type="text" name="number" id="number" class="formbold-form-input" />
+                    <input type="text" name="number" id="number" value="<?php echo $donnees['numero'] ?>" class="formbold-form-input" />
                 </div>
 
                 <div class="formbold-mb-5">
                     <label for="message" class="formbold-form-label"> description </label>
-                    <textarea rows="6" name="message" id="message" placeholder="Type your message" class="formbold-form-input"></textarea>
+                    <textarea rows="6" name="message" id="message" value="<?php echo $donnees['description'] ?>"  class="formbold-form-input"></textarea>
                 </div>
 
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> quantité </label>
-                    <input type="text" name="amount" id="amount" placeholder="amount" class="formbold-form-input" />
+                    <input type="text" name="amount" id="amount" placeholder="amount" value="<?php echo $donnees['qti'] ?>" class="formbold-form-input" />
                 </div>
 
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> prix HT</label>
-                    <input type="text" name="price" id="price" placeholder="price without tax" class="formbold-form-input" />
+                    <input type="text" name="price" id="price" placeholder="price without tax" value="<?php echo $donnees['prixht'] ?>" class="formbold-form-input" />
                 </div>
 
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> TVA </label>
-                    <input type="text" name="VAT" id="VAT" placeholder="VAT" class="formbold-form-input" />
+                    <input type="text" name="VAT" id="VAT" placeholder="VAT" value="<?php echo $donnees['tva'] ?>" class="formbold-form-input" />
                 </div>
 
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> prix ttc </label>
-                    <input type="text" name="taxes" id="taxes" placeholder="All taxes included price" class="formbold-form-input" />
+                    <input type="text" name="taxes" id="taxes" placeholder="All taxes included price" value="<?php echo $donnees['prixtc'] ?>" class="formbold-form-input" />
                 </div>
 
                 <div>
-                    <button class="formbold-btn">Submit</button>
+                    <button class="formbold-btn">modifier</button>
                 </div>
             </form>
         </div>
