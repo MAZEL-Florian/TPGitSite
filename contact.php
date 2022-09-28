@@ -130,7 +130,8 @@
                             
                             //button to delete contact using deleteContact.php
                             echo "<a href='deleteContact.php?id=" . $row['id'] . "' class='btn btn-danger'>Supprimer</a>";
-
+                            //button to update the contact using updateContact.php
+                            echo "<a href='updateContact.php?id=" . $row['id'] . "' class='btn btn-warning '>Modifier</a>";
                             echo "</div>";
                         echo "</div>";
                     echo "</div>";
