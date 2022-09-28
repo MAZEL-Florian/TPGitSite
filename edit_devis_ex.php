@@ -10,8 +10,10 @@ $tva = $_POST['tva'];
 $prixtc = $_POST['prixtc'];
 
 
-$update = "UPDATE `devis` SET `numero` = '$numero', `description` = '$description', `description` = '$date', `description` = '$qti', `description` = '$prixht', `description` = '$tva', `description` = '$prixtc' WHERE `devis`.`id` = 14;";
+$update = "UPDATE `devis` SET `numero` = '$numero', `description` = '$description', `date` = '$date', `qti` = '$qti', `prixht` = '$prixht', `tva` = '$tva', `prixtc` = '$prixtc' WHERE `devis`.`id` = $id;";
 
+$conn->exec($update);
+header('Location: devis.php');
 ?>
 
 

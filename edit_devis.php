@@ -41,7 +41,7 @@ $reponse->closeCursor()
                         ?>
                     </select> 
                 </div>
-
+                <input type="hidden" name="id" id="id" value="<?php echo $donnees['id'] ?>" placeholder="Enter the date" class="formbold-form-input" />
                 <div class="formbold-mb-5">
                     <label for="email" class="formbold-form-label"> date </label>
                     <input type="date" name="date" id="date" value="<?php echo $donnees['date'] ?>" placeholder="Enter the date" class="formbold-form-input" />
@@ -49,32 +49,32 @@ $reponse->closeCursor()
 
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> numéro </label>
-                    <input type="text" name="number" id="number" value="<?php echo $donnees['numero'] ?>" class="formbold-form-input" />
+                    <input type="text" name="numero" id="numero" value="<?php echo $donnees['numero'] ?>" class="formbold-form-input" />
                 </div>
 
                 <div class="formbold-mb-5">
                     <label for="message" class="formbold-form-label"> description </label>
-                    <textarea rows="6" name="message" id="message" value="<?php echo $donnees['description'] ?>"  class="formbold-form-input"></textarea>
+                    <textarea rows="6" name="description" id="description" value="<?php echo $donnees['description'] ?>"  class="formbold-form-input"></textarea>
                 </div>
 
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> quantité </label>
-                    <input type="text" name="amount" id="amount" placeholder="amount" value="<?php echo $donnees['qti'] ?>" class="formbold-form-input" />
+                    <input type="text" name="qti" id="qti" placeholder="amount" value="<?php echo $donnees['qti'] ?>" class="formbold-form-input" />
                 </div>
 
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> prix HT</label>
-                    <input type="text" name="price" id="price" placeholder="price without tax" value="<?php echo $donnees['prixht'] ?>" class="formbold-form-input" />
+                    <input type="text" name="prixht" id="prixht" placeholder="price without tax" value="<?php echo $donnees['prixht'] ?>" class="formbold-form-input" />
                 </div>
 
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> TVA </label>
-                    <input type="text" name="VAT" id="VAT" placeholder="VAT" value="<?php echo $donnees['tva'] ?>" class="formbold-form-input" />
+                    <input type="text" name="tva" id="tva" placeholder="VAT" value="<?php echo $donnees['tva'] ?>" class="formbold-form-input" />
                 </div>
 
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> prix ttc </label>
-                    <input type="text" name="taxes" id="taxes" placeholder="All taxes included price" value="<?php echo $donnees['prixtc'] ?>" class="formbold-form-input" />
+                    <input type="text" name="prixtc" id="prixtc" placeholder="All taxes included price" value="<?php echo $donnees['prixtc'] ?>" class="formbold-form-input" />
                 </div>
 
                 <div>
