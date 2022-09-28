@@ -81,7 +81,7 @@ include("navbar.php");
 
                 <div class="formbold-mb-5">
                     <label for="subject" class="formbold-form-label"> prix ttc </label>
-                    <input type="text" name="condtionpaiement" id="condtionpaiement" placeholder="condition" value="<?php echo $donnees['condtionpaiement'] ?>" class="formbold-form-input" />
+                    <input type="text" name="conditionpaiement" id="conditionpaiement" placeholder="condition" value="<?php echo $donnees['conditionpaiement'] ?>" class="formbold-form-input" />
                 </div>
 
                 <div>
