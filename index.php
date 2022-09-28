@@ -12,18 +12,37 @@ catch(PDOException $e){
     echo "Erreur : " . $e->getMessage();
 }
 //update contact
-$sql = "?";
-$conn->exec($sql);
+// $sql = "?";
+// $conn->exec($sql);
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Cours PHP / MySQL</title>
+        <title>Accueil</title>
         <meta charset="utf-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="cours.css">
     </head>
     <body>
         <?php include 'navbar.php'; ?>
+        <div class="container">
+        <h1 class="text-center py-5">Mes informations</h1>
+            <table class="table table-bordered text-center">
+                <thead class="table-dark">
+                    <tr>
+                    <th class="col-4">Nombre de contacts</th>
+                    <th class="col-4">
+                        <?php 
+                            $compteur = "SELECT COUNT(*) AS count FROM contacts";
+                            $resultat = $conn->query($compteur);
+                            while ($row = $resultat->fetch(PDO::FETCH_ASSOC)) { 
+                                echo $row['count'];
+                            };
+                        ?>
+                    </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
     </body>
 </html>
